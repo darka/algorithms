@@ -10,35 +10,31 @@ using namespace std;
 
 class Solution {
 public:
+  int editDistance(string const& a, string const& b) const
+  {
+    int ret = 0;
+    for (size_t i = 0; i < a.size(); ++i)
+    {
+      if (a[i] != b[i])
+        ret++;
+    }
+    return ret;
+  }
+
   int ladderLength(string start, string end, unordered_set<string> &dict) {
+    map< const string*, vector< const string* > > arr;
     dict.insert(start);
     dict.insert(end);
-    unordered_map<string, vector<const string*>> patterns;
-    patterns.max_load_factor(0.1);
-    for (auto i = dict.begin(); i != dict.end(); ++i)
-    {
-      auto str = *i;
-      for (int j = 0; j < str.size(); ++j)
-      {
-        char tmp = str[j];
-        str[j] = '_';
-        patterns[str].push_back(&(*i));
-        str[j] = tmp;
-      }
-    }
 
-    map< const string*, vector< const string* > > arr;
-   
-    for (auto i = patterns.begin(); i != patterns.end(); ++i)
+    for (unordered_set<string>::iterator i = dict.begin(); i != dict.end(); ++i)
     {
-      //cout << i->first << '\n';
-      for (auto j = i->second.begin(); j != i->second.end(); ++j)
+      unordered_set<string>::iterator j(i);
+      for (j++; j != dict.end(); ++j)
       {
-        //cout << "  " << (*(*j)) << '\n';
-        for (auto k = j+1; k != i->second.end(); ++k)
+        if (editDistance(*i, *j) == 1)
         {
-          arr[(*j)].push_back((*k));
-          arr[(*k)].push_back((*j));
+          arr[&(*i)].push_back(&(*j));
+          arr[&(*j)].push_back(&(*i));
         }
       }
     }
