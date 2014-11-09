@@ -10,7 +10,6 @@ def swap(seq, i, j):
   seq[i] = seq[j]
   seq[j] = tmp
   
-
 # n is start of seq
 def gen(seq, n, results):
   if (n == len(seq)-1):
@@ -21,6 +20,6 @@ def gen(seq, n, results):
     gen(seq, n+1, results)
     swap(seq, i, n)
     
-results = perm('ABC')
+results = perm('123')
 for result in results:
   print ''.join(result)
