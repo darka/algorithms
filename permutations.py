@@ -1,25 +1,29 @@
 import copy
 
-def perm(seq):
-  ret = []
-  gen(list(seq), 0, ret)
-  return ret
-
-def swap(seq, i, j):
-  tmp = seq[i]
-  seq[i] = seq[j]
-  seq[j] = tmp
+class Solution:
+  def permuteUnique(self, num):
+    ret = set()
+    self.gen(num, 0, ret)
+    return list(list(i) for i in ret)
   
-# n is start of seq
-def gen(seq, n, results):
-  if (n == len(seq)-1):
-    results.append(copy.copy(seq))
-    return
-  for i in xrange(n, len(seq)):
-    swap(seq, i, n)
-    gen(seq, n+1, results)
-    swap(seq, i, n)
+  def swap(self, seq, i, j):
+    tmp = seq[i]
+    seq[i] = seq[j]
+    seq[j] = tmp
     
-results = perm('123')
+  # n is start of seq
+  def gen(self, seq, n, results):
+    if (n == len(seq)-1):
+      results.add(tuple(copy.copy(seq)))
+      return
+    for i in xrange(n, len(seq)):
+      if i != n and seq[i] == seq[n]:
+        continue
+      self.swap(seq, i, n)
+      self.gen(seq, n+1, results)
+      self.swap(seq, i, n)
+    
+sol = Solution()
+results = sol.permuteUnique([1, 2, 2])
 for result in results:
-  print ''.join(result)
+  print ''.join(str(i) for i in result)
