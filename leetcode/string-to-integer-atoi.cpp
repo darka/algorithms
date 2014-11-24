@@ -20,13 +20,8 @@ public:
       if (!started)
       {
         if (isspace(c))
-        {
-          if (!started)
-            continue;
-          else
-            return 0;
-        }
-  
+          continue;
+
         if (c == '+') 
         {
           started = true;
@@ -71,6 +66,6 @@ int main()
   std::cout << sol.atoi("123") << '\n';
   std::cout << sol.atoi("     123") << '\n';
   std::cout << sol.atoi("    \n 123.4") << '\n';
-  std::cout << sol.atoi("    \n 999999LOL") << '\n';
-  std::cout << sol.atoi("    \n 2147483646LOL") << '\n';
+  std::cout << sol.atoi("    \n 999999TEST") << '\n';
+  std::cout << sol.atoi("    \n 2147483646TEST") << '\n';
 }
