@@ -20,11 +20,8 @@ public:
     {
       return min(findMin(num, a + (b - a) / 2, b),
                  findMin(num, a, a + (b - a) / 2));
-
     }
-
   }
- 
 };
 
 int main()

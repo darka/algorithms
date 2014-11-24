@@ -30,5 +30,4 @@ int main()
   Solution sol;
   vector<int> prices({1,2,3,11, 4, 7});
   cout << sol.maxProfit(prices) << '\n';
-
 }
