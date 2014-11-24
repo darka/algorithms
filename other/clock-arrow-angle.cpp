@@ -8,7 +8,6 @@ double angle(int hour, int minute)
   double hour_arrow = (double) hour + (double) minute / 60;
   hour_arrow = hour_arrow * 360 / 12.0;
   double minute_arrow = (double) minute * 360 / 60;
-  //cout << hour_arrow << ' ' << minute_arrow << '\n';
   double angle = fabs(hour_arrow - minute_arrow);
   if (angle >= 180)
     angle = 360 - angle;
