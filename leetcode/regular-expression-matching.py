@@ -33,7 +33,7 @@ class Solution:
             if self.performMatch(s, p, i, j+2, table):
                 return True
 
-            # Attempt to match >1 characters
+            # Attempt to match >=1 characters
             k = i
             while k < len(s) and self.letterMatches(s[k], p[j]):
                 if self.performMatch(s, p, k+1, j+2, table):
