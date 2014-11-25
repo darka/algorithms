@@ -40,10 +40,6 @@ class Solution:
                     return True
                 k += 1
 
-            # Full match (all possible characters)
-            if self.performMatch(s, p, k, j+2, table):
-                return True
-
         else:
             # Did we complete matching the string but the pattern is not finished?
             if i >= len(s): 
