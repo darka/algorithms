@@ -8,9 +8,9 @@ int solution(vector<int> &A) {
         fib[i] = fib[i-1] + fib[i-2];
     }
     
-    const int integer_max = 100001;
+    const int integerMax = 100001;
     
-    vector<int> jumps(A.size() + 1, integer_max);
+    vector<int> jumps(A.size() + 1, integerMax);
     vector<int> leaves;
     for (size_t i = 0; i < A.size(); ++i) {
         if (A[i] == 1) {
@@ -34,7 +34,7 @@ int solution(vector<int> &A) {
 
     }
     
-    if (jumps.back() == integer_max)
+    if (jumps.back() == integerMax)
         return -1;
     else
         return jumps.back();
